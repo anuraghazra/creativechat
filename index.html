@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Chat | Chat With Creativity</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="./src/js/client.js"></script>
+  
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+  
+  <div class="container">
+
+    <h2>Expose Your Creativity</h2>
+    
+    <hr noshade style="color:black">
+    <div class="ui">
+
+      <fieldset>
+        <legend>
+          Line Color 
+        </legend>
+        <input type="color" id="color">
+      </fieldset>
+
+      <fieldset>
+        <legend>
+          Line width
+        </legend>
+        <input type="range" min="1" max="30" id="lineWidth" value="5">        
+      </fieldset>
+    </div>
+
+    <canvas id="c"></canvas>
+
+    <div id="cur">
+    </div>
+    <p id="backend">Users Active : </p>
+  </div>
+  
+
+  <footer>
+
+    <section>
+      <h3>About CreativeChat !</h3>
+      <p>Made With NodeJS And Socket.io</p>
+      <p>Made By Anurag Hazra</p>
+      <p>All Rights Reserved 2018 BasicHTMLPro &copy;</p>
+    </section>
+
+    <section>
+      <h3>Contact Me !</h3>
+      <p><a href="http://github.com/anuraghazra">Find Me On Github</a></p>
+      <p><a href="http://facebook.com/BasicHTMLPro">Try To Find Me On Facebook</a></p>
+      <p><a href="mailto:hazru.anurag@gmail.com">Mail Me On Gmail</a></p>
+    </section>
+
+
+  </footer>
+
+</body>
+</html>

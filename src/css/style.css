@@ -1,0 +1,71 @@
+/* ---- Main Styles ------ */
+* {
+  box-sizing: border-box;
+  font-family: 'Century Gothic';
+  color : #353535;
+}
+body,html {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+p,h3 {
+  color :ghostwhite;
+}
+input[type=text],button { 
+  padding: 5px;
+}
+input[type=text] {
+  width: 25%;
+}
+
+a {
+  color : white;
+  text-decoration: none;
+}
+a:hover {
+  color : #c0c0c0;
+}
+
+.container {
+  padding: 10px;
+}
+
+.ui {
+  width: 100%;
+  display: flex;
+}
+fieldset {
+  border: 1px solid #555;
+  flex : 1;
+}
+fieldset > input { width: 100% }
+
+#backend {
+  user-select: none;
+  color : #353535;
+  margin : 0;
+  font-size : 14px
+}
+
+footer {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  background-color: #252525;
+  padding: 10px;
+  line-height: 15px;
+}
+section:first-of-type {
+  border-right : 1px solid white; 
+}
+section {
+  flex: 1;
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px;
+}
