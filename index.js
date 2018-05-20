@@ -20,12 +20,10 @@ server.listen(port);
 let listener = io.listen(server);
 
 let clientsNum = 0;
-let users = [];
 
 // listen for messages
 listener.sockets.on('connection', function(socket) {
   clientsNum++;
-  users.push(process.env.COMPUTERNAME);
  
   socket.on('mouse',function(data) {
 
@@ -34,23 +32,20 @@ listener.sockets.on('connection', function(socket) {
 
   });
 
+  socket.on('msg', function(data) {
+    socket.broadcast.emit('backend_msg', data);
+  })
+
 
   socket.on('disconnect', function() {
     clientsNum--;
-
-
-    for (let i = 0; i < users.length; i++) {
-      if(users[i] === process.env.COMPUTERNAME) {
-        users.splice(i,1);
-      }
-    }
 
     socket.emit('stats', clientsNum);
 
   });
 
   setInterval(function() {
-    socket.emit('stats', { active : clientsNum, users :  users });
+    socket.emit('stats', { active : clientsNum });
   },200);
 
 

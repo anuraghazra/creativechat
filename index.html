@@ -7,6 +7,7 @@
   <script src="./src/js/client.js"></script>
   
   <link rel="stylesheet" href="./src/css/style.css">
+  <link rel="stylesheet" href="./src/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
   
@@ -15,6 +16,7 @@
     <h2>Expose Your Creativity</h2>
     
     <hr noshade style="color:black">
+
     <div class="ui">
 
       <fieldset>
@@ -28,36 +30,69 @@
         <legend>
           Line width
         </legend>
-        <input type="range" min="1" max="30" id="lineWidth" value="5">        
+        <input type="range" min="1" max="100" id="lineWidth" value="5">        
       </fieldset>
     </div>
 
-    <canvas id="c"></canvas>
 
-    <div id="cur">
+
+    <div class="sidechat">
+      <h4>Chat With Friends Globally</h4>
+      <hr noshade>
+      
+      <div class="msgs-panel" id="msg-panel">
+
+      </div>
+
+      <div class="chat-panel">
+        <input type="text" id="chat_msg" placeholder="Chat With Everyone">
+        <button id="send">Send</button>
+      </div>
+      <div class="handle"><i class="fa fa-2x fa-angle-right"></i></div>
     </div>
+
+
+    
+    <div class="canvas-container">
+
+      <canvas id="c"></canvas>
+      
+    </div>
+
     <p id="backend">Users Active : </p>
+  
+    <footer>
+  
+      <section>
+        <h3>About CreativeChat !</h3>
+        <p>Made With NodeJS And Socket.io</p>
+        <p>Made By Anurag Hazra</p>
+        <p>All Rights Reserved 2018 BasicHTMLPro &copy;</p>
+      </section>
+  
+      <section>
+        <h3>Contact Me !</h3>
+        <a href="http://github.com/anuraghazra">
+          <i class="fa fa-github">
+              <span>Find Me On Github</span>
+          </i>
+        </a>
+        <a href="http://facebook.com/BasicHTMLPro">
+          <i class="fa fa-facebook-f">
+              <span>Try To Find Me On Facebook</span>
+          </i>
+        </a>
+        <a href="mailto:hazru.anurag@gmail.com">
+          <i class="fa fa-google-plus">
+              <span>Mail Me On Gmail</span>
+          </i>
+        </a>
+      </section>
+  
+    </footer>
+    
   </div>
   
-
-  <footer>
-
-    <section>
-      <h3>About CreativeChat !</h3>
-      <p>Made With NodeJS And Socket.io</p>
-      <p>Made By Anurag Hazra</p>
-      <p>All Rights Reserved 2018 BasicHTMLPro &copy;</p>
-    </section>
-
-    <section>
-      <h3>Contact Me !</h3>
-      <p><a href="http://github.com/anuraghazra">Find Me On Github</a></p>
-      <p><a href="http://facebook.com/BasicHTMLPro">Try To Find Me On Facebook</a></p>
-      <p><a href="mailto:hazru.anurag@gmail.com">Mail Me On Gmail</a></p>
-    </section>
-
-
-  </footer>
 
 </body>
 </html>

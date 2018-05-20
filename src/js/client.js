@@ -5,9 +5,27 @@ window.onload = function() {
   //canvasApp
   let backend = document.getElementById('backend');
   let color = document.getElementById('color');
-  let cur = document.getElementById('cur');
+  let handle = document.getElementsByClassName('handle')[0];
+  let sidechat = document.getElementsByClassName('sidechat')[0];
   let lineWidth = document.getElementById('lineWidth');
+  let canvasContainer = document.getElementsByClassName('canvas-container')[0]
   let canvas = document.getElementById('c');
+
+  let chat_msg = document.getElementById('chat_msg');
+  let msg_panel = document.getElementById('msg-panel');
+  let send = document.getElementById('send');
+
+  send.addEventListener('click', function() {
+    if (chat_msg.value !== '') {
+      socket.emit('msg', chat_msg.value);
+      msg_panel.innerHTML += '<p>'+chat_msg.value+'</p>';
+    }
+  })
+  
+  handle.onclick = function() {
+    sidechat.classList.toggle('show-panel');
+  }
+
   let ctx = canvas.getContext('2d');
 
   let randR = Math.floor(100+Math.random()*155); 
@@ -20,6 +38,9 @@ window.onload = function() {
 
   let width = canvas.width = window.innerWidth-30;
   let height = canvas.height = window.innerHeight-210;
+  canvasContainer.style.width = width + 'px';
+  canvasContainer.style.height = height + 'px';
+
 
   function draw(coords) {
     ctx.beginPath();
@@ -83,18 +104,24 @@ window.onload = function() {
   });
 
   socket.on('stats', function(data) {
-    backend.innerText = 'Users Active : ' + data.active + ' | Users : ' + JSON.stringify(data.users);
+    backend.innerText = 'Users Active : ' + data.active;
+  })
+  
+  socket.on('backend_msg', function(data) {
+    msg_panel.innerHTML += '<p>'+data+'</p>';
   })
 
 
   //UPDATE CACHE // NO_CACHE
+  let randCache = Math.floor(100*Math.random()*9999999999);
   let stylesheet = document.getElementsByTagName('link')[0];
   let scripts1 = document.getElementsByTagName('script')[1];
   let scripts2 = document.getElementsByTagName('script')[0];
-  scripts1.src =  scripts1.getAttribute('src') + '?' + Math.floor(100*Math.random()*9999999999);
-  scripts2.src =  scripts2.getAttribute('src') + '?' + Math.floor(100*Math.random()*9999999999);
-  stylesheet.href = stylesheet.getAttribute('href') + '?' + Math.floor(100*Math.random()*9999999999);
 
+  scripts1.src = scripts1.getAttribute('src') + '?' + randCache;
+  scripts2.src = scripts2.getAttribute('src') + '?' + randCache;
+  stylesheet.setAttribute('href',stylesheet.getAttribute('href') + '?' + randCache); 
+  console.log(stylesheet)
 }
 
 
