@@ -7,6 +7,7 @@
 body,html {
   padding: 0;
   margin: 0;
+  
 }
 
 h2 {
@@ -101,7 +102,6 @@ fieldset > input { width: 100% }
   word-wrap: break-word;
   padding: 10px;
   overflow: hidden;
-  line-height : 5px;
 }
 .msgs-panel:hover {
   overflow-y: scroll;

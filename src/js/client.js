@@ -34,7 +34,6 @@ window.onload = function() {
   
   // 'rgb(' + rand + ', ' + rand + ', ' + rand +')';
   color.value = '#' + randR.toString(16) + randG.toString(16) + randB.toString(16);
-  console.log(color.value);
 
   let width = canvas.width = window.innerWidth-30;
   let height = canvas.height = window.innerHeight-210;
@@ -54,7 +53,7 @@ window.onload = function() {
     ctx.closePath();
   }
 
-  let coords = {};
+  let coords = {x:0,y:0,lastX:0,lastY:0,color:'red'};
   let isDown = false;
   canvas.addEventListener('mousedown', function(e) {
     isDown = true;
@@ -67,6 +66,17 @@ window.onload = function() {
 
 
   let cBounds = canvas.getBoundingClientRect();
+  socket.emit('mouse', coords );
+
+  let fakeE = {
+    offsetX : 0,
+    offsetY : 0,
+    touches : [{clientX : 0,clientY : 0}]
+  }
+  socket.emit('mouse', coords );
+  socket.on('backend_mouse', function(data) {
+    draw(data);
+  });
   function moveAndDraw(e, isMobile) {
     if (!isDown) return;
 
@@ -76,7 +86,7 @@ window.onload = function() {
     coords.color = color.value;
     coords.lineWidth = parseInt(lineWidth.value);
     
-    draw(coords);
+    // draw(coords);
     
     socket.emit('mouse', coords );
     socket.on('backend_mouse', function(data) {

@@ -26,10 +26,7 @@ listener.sockets.on('connection', function(socket) {
   clientsNum++;
  
   socket.on('mouse',function(data) {
-
-    socket.emit('backend_mouse', data );
-    socket.broadcast.emit('backend_mouse', data );
-
+    listener.emit('backend_mouse', data );
   });
 
   socket.on('msg', function(data) {
@@ -39,13 +36,11 @@ listener.sockets.on('connection', function(socket) {
 
   socket.on('disconnect', function() {
     clientsNum--;
-
-    socket.emit('stats', clientsNum);
-
+    listener.emit('stats', clientsNum);
   });
 
   setInterval(function() {
-    socket.emit('stats', { active : clientsNum });
+    listener.emit('stats', { active : clientsNum });
   },200);
 
 
